@@ -1,4 +1,4 @@
-ul {
+.books-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -6,8 +6,20 @@ ul {
   flex-grow: 1;
 }
 
-li {
+.books-list li {
   margin: 10px;
   padding: 10px;
   border: 1px solid black;
+}
+
+.cart-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-list li {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -16,6 +16,7 @@ class App extends Component {
         <Header />
         <Route exact={true} path="/" component={Landing} />
         <Route path="/books" component={Books} />
+        <Route path="/cart" component={Cart} />
         <Footer />
       </div>
     );

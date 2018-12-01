@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import idb from 'idb';
 
 // import Cart from './cart';
 
@@ -30,6 +31,20 @@ class Books extends Component {
     })
   }
 
+  createDB() {
+    /* eslint-disable */
+    return idb.open('books-store', 1, (upgradeDB) => {
+      switch(upgradeDB.oldVersion) {
+        case 0:
+          upgradeDB.createObjectStore('cart', {
+            keyPath: 'id',
+            autoIncrement: true
+          });
+      }
+    })
+    /* eslint-enable */
+  }
+
   booksHTML(name, description) {
     console.log(name, description);
     return (
@@ -37,7 +52,7 @@ class Books extends Component {
         <img src="https://via.placeholder.com/150" alt="Placeholder" />
         <h2>{name}</h2>
         <p>{description}</p>
-        <button>Details</button>
+        <button onClick={() => this.AddBookToDB(name, 0)}>Details</button>
       </li>
     );
   }
@@ -66,6 +81,24 @@ class Books extends Component {
     console.log(this.state);
   }
 
+  AddBookToDB(name, price) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await this.createDB();
+        const tx = db.transaction('cart', 'readwrite');
+        const store = tx.objectStore('cart');
+        store.add({
+          name,
+          price
+        });
+        resolve('Successfully added to store');
+      } catch(error) {
+        console.log(error);
+        reject(error.stack);
+      }
+    })
+  }
+
   render() {
     return (
         <div>
@@ -78,9 +111,9 @@ class Books extends Component {
             <label htmlFor="description">Description</label>
             <input id="description" value={this.state.description} onChange={this.handleDescriptionChange} type="text"/>
           </div>
-          <button>Add Book</button>
+          <button>Add book</button>
         </form>
-        <ul>
+        <ul className="books-list">
           { this.state.books }
         </ul>
       </div>

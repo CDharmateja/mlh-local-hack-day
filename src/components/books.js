@@ -52,7 +52,7 @@ class Books extends Component {
         <img src="https://via.placeholder.com/150" alt="Placeholder" />
         <h2>{name}</h2>
         <p>{description}</p>
-        <button onClick={() => this.AddBookToDB(name, 0)}>Details</button>
+        <button onClick={() => this.AddBookToDB(name, 0)}>Add to cart</button>
       </li>
     );
   }

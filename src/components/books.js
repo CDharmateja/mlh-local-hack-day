@@ -101,8 +101,9 @@ class Books extends Component {
 
   render() {
     return (
-        <div>
-        <form onSubmit={this.handleAddBook}>
+      <div>
+        <h3>Add new book</h3>
+        <form class="add-book" onSubmit={this.handleAddBook}>
           <div>
             <label htmlFor="name">Name: </label>
             <input type="text" id="name" value={this.state.value} onChange={this.handleNameChange} />
@@ -113,6 +114,7 @@ class Books extends Component {
           </div>
           <button>Add book</button>
         </form>
+        <h3>Books</h3>
         <ul className="books-list">
           { this.state.books }
         </ul>

@@ -1,0 +1,12 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+  

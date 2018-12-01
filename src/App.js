@@ -5,8 +5,9 @@ import Header from './components/header';
 import Landing from './components/landing';
 import Footer from './components/footer';
 import Books from './components/books';
+import Cart from './components/cart';
 
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   render() {

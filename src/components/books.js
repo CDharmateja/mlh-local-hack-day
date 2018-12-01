@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+// import Cart from './cart';
+
+import { Link } from 'react-router-dom';
+
 class Books extends Component {
   constructor(props) {
     super(props);
@@ -64,12 +68,16 @@ class Books extends Component {
 
   render() {
     return (
-      <div>
+        <div>
         <form onSubmit={this.handleAddBook}>
-          <label htmlFor="name">Name: </label>
-          <input type="text" id="name" value={this.state.value} onChange={this.handleNameChange} />
-          <label htmlFor="description">Description</label>
-          <input id="description" value={this.state.description} onChange={this.handleDescriptionChange} type="text"/>
+          <div>
+            <label htmlFor="name">Name: </label>
+            <input type="text" id="name" value={this.state.value} onChange={this.handleNameChange} />
+          </div>
+          <div>
+            <label htmlFor="description">Description</label>
+            <input id="description" value={this.state.description} onChange={this.handleDescriptionChange} type="text"/>
+          </div>
           <button>Add Book</button>
         </form>
         <ul>
